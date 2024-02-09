@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="./index.css" rel="stylesheet">
+
+  <title>Buyer app</title>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand" style="padding: 10px;">Buyer App</a>
+    
+    <div class="form-inline" style="display: flex; padding: 10px; min-width: 25%;">
+      <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search for Products.." aria-label="Search" style="margin-right: 5px;">
+      <button class="btn btn-outline-success my-2 my-sm-0" onclick="onSearchClick()" type="submit">Search</button>
+    </div>
+  </nav>
+
+
+    <div style="display: flex; width:100%; flex-direction: column; justify-content: center; margin: 0px; margin-top: 10px; align-items: center;">
+      <div id="product-container" class="row" style="display: flex; flex-direction: column; width: 80%; align-items: center;">
+        
+        
+        <!-- Product Card -->
+        <div id="card-product" class="custom-card  col-md-4" style="width: 80%; display: none; height: 20%;">
+          <div class="product-card" style="display: flex; flex-direction: row; align-items: center; width: 100%; padding: 10px;">
+            <div>
+              <div id="banner-container" >
+                <div>
+                  <img class="product-image" style="height: 20%; width: 150px;">
+                </div>
+              </div>
+            </div>
+            <div class="product-details" style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px;" >
+              <h5 class="card-title"></h5>
+              <p class="card-text description"></p>
+              <p class="card-text location">Location: Product Location</p>
+              <p class="card-text price">Price: $100</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- skimmer Card -->
+        <div id="loading-card-skimmer" class="col-md-4" style="width: 80%; display: none; height: 20%;">
+          <div class="product-card" style="width: 100%; padding: 10px;">
+            <div>
+              <div id="banner-container" >
+                <div>
+                  <div class="skimmer-loading-card">
+                    <div class="skimmer-loading-card-content">
+                      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="skimmer-loading-card-line"></div>
+                      <div class="skimmer-loading-card-line"></div>
+                      <div class="skimmer-loading-card-line"></div>
+                      <div class="skimmer-loading-card-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KTNF9yHajE9fXfBn6aJ3gKk5TVRMIcPScww" crossorigin="anonymous"></script>
+<script src="./index.js"></script>
+</html>

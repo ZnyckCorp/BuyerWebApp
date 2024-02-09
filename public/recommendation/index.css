@@ -1,0 +1,43 @@
+
+
+      .skimmer-loading-card {
+        width: 100%;
+        /* max-width: 300px; Adjust as needed */
+        height: 150px; /* Adjust as needed */
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        margin: 20px auto;
+      }
+      
+      .skimmer-loading-card-content {
+        padding: 10px;
+      }
+      
+      .skimmer-loading-card-line {
+        height: 12px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin: 8px 0;
+        border-radius: 4px;
+        animation: skimmer-loading-animation 1s ease-in-out infinite;
+      }
+      
+      @keyframes skimmer-loading-animation {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(150%);
+        }
+      }
+
+      .custom-card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Customize shadow properties as needed */
+        margin-bottom: 10px;
+      }
+      
