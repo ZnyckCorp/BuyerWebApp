@@ -3,15 +3,16 @@ async function  search(search){
     if(!search || search == "" || search == undefined){
       return;
     }
-
+    setSpiner(true);
     await fetch(`https://us-central1-seller-app-b0a09.cloudfunctions.net/queryrecom?query_term=${search}`,{
       method: 'GET',
     }).then(res => res.json())
     .then(data => {
-      console.log(data);
+      setSpiner(false);
       showView(data);
     }).catch(err => {
       console.log(err);
+      setSpiner(false);
     })
 }
 
@@ -22,8 +23,6 @@ async function showView(data) {
   let productContainer = document.getElementById("product-container");
   let productCard = document.getElementById("card-product");
 
-
-  // Create an array to hold fetch promises
   let fetchPromises = [];
 
   data.forEach((element, index) => {
@@ -31,7 +30,6 @@ async function showView(data) {
     newSkimmerCard.style.display = "block";
     productContainer.appendChild(newSkimmerCard);
 
-    // Create a fetch promise and add it to the array
     let fetchPromise = fetch(`https://us-central1-seller-app-b0a09.cloudfunctions.net/getProduct?product_id=${element.id}`, {
       method: 'GET',
     })
@@ -40,7 +38,7 @@ async function showView(data) {
       const newProductCard = productCard.cloneNode(true);
       newProductCard.querySelector('.card-title').textContent = data.item_name;
       newProductCard.querySelector('.description').textContent = data.item_description;
-      newProductCard.querySelector('.location').textContent = "Location: " + data.location;
+      newProductCard.querySelector('.location').textContent = "Unit: " + data.item_unit;
       newProductCard.querySelector('.price').textContent = "Price: Rs." + data.item_price;
       newProductCard.querySelector('.product-image').src = data.image_url_primary;
 
@@ -55,7 +53,6 @@ async function showView(data) {
     fetchPromises.push(fetchPromise);
   });  
 
-  // Wait for all fetch promises to resolve
   await Promise.all(fetchPromises);
 }
 
@@ -64,7 +61,10 @@ async function showView(data) {
   const urlParams = new URLSearchParams(window.location.search);
   const search = urlParams.get('search');
   if (search != null && search != "" && search != undefined) {
-     this.search(search); // Call search function with the search term parameter
+    document.getElementById("center-container-boxy").style.display = "none";
+     this.search(search);
+  }else{
+    document.getElementById("center-container-boxy").style.display = "block";
   }
 }
 
@@ -78,3 +78,11 @@ async function  onSearchClick(search){
 }
 
 init();
+
+function setSpiner(bool){
+  let loadingCard = document.getElementById("center-container-boxy-spinner");
+  if(bool){
+    return loadingCard.style.display = "block";
+  }
+  return loadingCard.style.display = "none";
+}
